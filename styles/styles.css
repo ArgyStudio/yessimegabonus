@@ -1,0 +1,740 @@
+/* File: styles.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
+/*------------------------------------
+1. Variables
+------------------------------------*/
+:root {
+
+    /* === PROMOCION === */
+    --promocion-font-size: 1.1rem;
+    --promocion-font-weight: 600;
+    --promocion-color: #ffffff;
+    /* celeste brillante */
+    --promocion-margin-bottom: 0.5rem;
+    --promocion-shadow-mid: #d900ff;
+    /* azul profundo */
+    --promocion-text-shadow:
+        /* 0 0 4px var(--promocion-color),
+        0 0 8px var(--promocion-color),
+        0 0 12px var(--promocion-shadow-mid); */
+
+
+
+        /*CARD COLORS*/
+        --color-escribitunombre: rgba(212, 0, 255, 0.3);
+    /* celeste al 30% de opacidad */
+
+    --gradient-start: rgba(144, 10, 156, 0.9);
+    /* azul profundo */
+    --gradient-end: rgba(56, 3, 50, 0.9);
+    /* azul muy oscuro */
+
+
+    /* Fondo casi negro con matiz azul */
+    --bg-base: #2e003e;
+    /* azul-negro absoluto */
+
+    /* Degradé interno de más oscuro a menos oscuro */
+    --bg-dark: #2e003e;
+    /* azul muy oscuro */
+    --bg-light: #6a0572;
+    /* azul profundo */
+    --accent-mid: #a5029a;
+    /* celeste cálido */
+    --accent-light: #ffe100;
+    /* cian brillante */
+
+    /* Textos blancos suaves */
+    --white: #ffffff;
+    /* blanco puro */
+
+    /* Fondo para inputs */
+    --input-bg: rgba(255, 215, 0, 0.15);
+    /* dorado al 15% de opacidad */
+
+    --gutter: 1rem;
+    --radius: 1rem;
+
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --fast: 0.2s;
+    --medium: 0.5s;
+
+    --screen-aspect: 360/780;
+
+    /*lo nuevo de escribi tu nombre*/
+    --gutter: 1rem;
+    --primary-color: #4f46e5;
+    --accent-color: #facc15;
+    --glow-color: rgba(250, 204, 21, 0.75);
+
+}
+
+
+
+:root {
+    /* Colores */
+    --wpp-green: #ffc400;
+    /* verde brillante */
+    --wpp-green-2: #ff9100;
+    /* verde lima */
+    --wpp-dark: #6a0572;
+    /* azul profundo */
+    --white: #ffffff;
+
+    /* Tipografía y formas */
+    --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+    --radius: 28px;
+    --gap: 12px;
+
+    /* Tiempo / easing (UNIFICADOS) */
+    --pulse-duration: 2200ms;
+    /* duración base del ciclo */
+    --pulse-ease: cubic-bezier(.16, .84, .24, 1);
+    /* easing natural y suave */
+
+    /* Pulso / escala / traslación (globales) */
+    --pulse-scale-peak: 1.10;
+    /* pico global del pulso */
+    --pulse-scale-min: 0.992;
+    /* undershoot leve */
+    --pulse-translate-peak: -3px;
+    /* traslación vertical máxima */
+
+    /* Icon (controles específicos) */
+    --icon-translate-x: 4px;
+    --icon-translate-y: -1.2px;
+    /* ligera elevación para sensación 3D */
+    --icon-rotate-peak: -8deg;
+    --icon-skew-max: 1.6deg;
+    --icon-scale-peak: 1.06;
+    --icon-scale-min: 0.995;
+    --icon-shadow-peak: 0 6px 18px rgba(0, 0, 0, 0.18);
+    --icon-shadow-base: 0 2px 6px rgba(0, 0, 0, 0.10);
+
+    /* Sombras del botón */
+    --shadow-base: 0 8px 26px rgb(119, 3, 130);
+    --shadow-peak: 0 20px 44px rgb(60, 1, 54);
+
+    /* Otros */
+    --transition-fast: 160ms;
+}
+
+/*------------------------------------
+2. Impedir scroll de la página
+------------------------------------*/
+html,
+body {
+    height: 100%;
+    margin: 0;
+    background: var(--bg-base);
+}
+
+
+/*------------------------------------
+3. Base & Reset
+------------------------------------*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #000000;
+    /* para centrar la pantalla fija */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ocultar contenido fallback */
+.content {
+    display: none !important;
+}
+
+/*------------------------------------
+4. Pantalla fija full-viewport
+------------------------------------*/
+.screen {
+    /* position: fixed; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* degradé que parte de púrpura profundo y va a púrpura-negro */
+    background: linear-gradient(0deg,
+            var(--bg-base),
+            #000000);
+
+    padding: var(--gutter);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+    /* max-width: 550px; */
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    overflow: hidden;
+    justify-content: center;
+}
+
+/*------------------------------------
+5. Card & Textos
+------------------------------------*/
+.card {
+    width: 100%;
+    background: linear-gradient(0deg, rgb(72 10 107),
+            rgba(0, 0, 0, 0.652));
+
+    backdrop-filter: blur(111px);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    padding-top: 100px;
+
+
+
+}
+
+
+
+.title {
+    font-size: clamp(3vw, 24px, 1.7rem);
+    border: 2px solid var(--accent-light);
+    padding: 0;
+    font-weight: 800;
+    color: var(--accent-light);
+    text-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.9),
+        0 0 9px var(--accent-mid);
+    text-align: center;
+    margin-bottom: rem;
+    line-height: 1;
+
+}
+
+.subtitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    /* escala fluida */
+    font-weight: 700;
+    color: #fff;
+
+    /* Sombra de texto más realista */
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.6),
+        0 4px 12px rgba(0, 0, 0, 0.4);
+
+    line-height: 1.4;
+    text-align: center;
+
+    /* Animación sutil al aparecer */
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeUp 0.6s ease-out forwards;
+
+    /* Espaciado interno opcional para aire */
+    padding: 0.2rem 0.6rem;
+}
+
+/* Animación de entrada */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.subtitle .fire {
+    display: inline-block;
+    transform-origin: center bottom;
+    width: 26px;
+    /* ancho en px */
+    height: 26px;
+    /* alto en px */
+}
+
+
+.highlight {
+    font-size: 12px;
+    font-weight: var(--promocion-font-weight);
+    color: var(--promocion-color);
+    margin-bottom: var(--promocion-margin-bottom);
+
+    /* resplandor intenso */
+    text-shadow: var(--promocion-text-shadow);
+}
+
+
+
+
+
+/* Reset básico y fuente por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo del body y contenedor principal */
+body {
+    color: #000000;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+
+
+
+.cta-button,
+button.cta-button {
+    --pad-vertical: 12px;
+    --pad-horizontal: 36px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap);
+    padding: var(--pad-vertical) var(--pad-horizontal);
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 16.5px;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--wpp-green), var(--wpp-green-2));
+    border: solid 2px rgba(255, 255, 255, 0.386);
+    border-radius: var(--radius);
+    cursor: pointer;
+    user-select: none;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    overflow: hidden;
+    /* necesario para sheen / ripple */
+    text-decoration: none;
+    box-shadow:
+        var(--shadow-base),
+        inset 0 -2px 6px rgba(255, 0, 0, 0.12);
+    transform-origin: center center;
+    transition:
+        transform var(--transition-fast) var(--pulse-ease),
+        box-shadow var(--transition-fast),
+        filter var(--transition-fast),
+        opacity var(--transition-fast);
+    will-change: transform, box-shadow, filter;
+    -webkit-tap-highlight-color: transparent;
+
+    /* animación principal (pulso + sombra) -> única fuente temporal */
+    animation:
+        cta-pulse var(--pulse-duration) var(--pulse-ease) infinite both;
+}
+
+
+
+/* Texto e icono - sincronizados mediante la misma duración */
+.cta-text {
+    display: inline-block;
+    transform: translateZ(0);
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.703),
+        /* sombra base */
+        0 0 10px rgba(0, 112, 30, 0.7),
+        /* glow cian */
+        0 0 20px rgba(0, 0, 0, 0.645);
+    /* glow externo */
+
+    backface-visibility: hidden;
+    /* ligero desfase negativo para mantener coherencia con el pulso */
+    will-change: transform, opacity;
+}
+
+
+
+
+
+
+/* ------------------------
+   KEYFRAMES — matriz temporal unificada
+   ------------------------ */
+
+/* Pulso principal (botón + sombra) */
+@keyframes cta-pulse {
+    0% {
+        transform: scale(1) translateY(0);
+        box-shadow: var(--shadow-base);
+    }
+
+    28% {
+        transform: scale(calc(var(--pulse-scale-peak) - 0.02)) translateY(calc(var(--pulse-translate-peak) * 0.6));
+        box-shadow: var(--shadow-peak);
+    }
+
+    50% {
+        transform: scale(var(--pulse-scale-min)) translateY(0);
+        box-shadow: var(--shadow-base);
+    }
+
+    72% {
+        transform: scale(var(--pulse-scale-peak)) translateY(var(--pulse-translate-peak));
+        box-shadow: var(--shadow-peak);
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+        box-shadow: var(--shadow-base);
+    }
+}
+
+
+
+/* ------------------------
+   Hover: amplificar coherente del pulso
+   ------------------------ */
+.cta-button:hover {
+
+    animation: none
+}
+
+
+
+
+
+
+
+
+.subtitle {
+
+    text-decoration: underline;
+    text-decoration-color: rgb(208, 0, 255);
+    /* subrayado en celeste brillante */
+    text-decoration-thickness: 2px;
+    /* grosor del subrayado */
+    text-underline-offset: 2px;
+    /* espacio entre texto y subrayado */
+}
+
+
+
+/*/////////////////////////////////////*/
+/* animación del skeleton (nombre distinto para evitar colisión) */
+.skeleton {
+    animation: pulse-fade 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-fade {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+/*------------------------------------
+7. Carousel: grab, pausa & auto-scroll
+------------------------------------*/
+.carousel-section {
+    width: 90%;
+    margin-top: var(--gutter);
+    text-align: center;
+
+    max-width: 768px;
+
+}
+
+.carousel-section h2 {
+    font-size: clamp(10px, 1.1vw, 1.3vw);
+    font-weight: 600;
+    color: var(--accent-light);
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+
+}
+
+.carousel {
+    overflow: hidden;
+
+}
+
+.carousel-track {
+    display: flex;
+    gap: 0.5rem;
+    transition: transform var(--fast) var(--ease);
+    cursor: grab;
+    touch-action: pan-x;
+    user-select: none;
+    animation: scrollCarousel 20s linear infinite;
+}
+
+.carousel-track:active {
+    cursor: grabbing;
+    animation-play-state: paused;
+}
+
+@keyframes scrollCarousel {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.carousel-item {
+    flex: 0 0 calc((100% - (4 * 0.5rem)) / 5);
+    position: relative;
+}
+
+
+
+.carousel-item img {
+    width: 100%;
+    border-radius: 3px;
+    object-fit: cover;
+    pointer-events: none;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.carousel-item {
+    flex: 0 0 calc((100% - (4 * 0.5rem)) / 5);
+    aspect-ratio: 1 / 1;
+    /* cajas cuadradas */
+    overflow: hidden;
+    /* recorta lo que sobre */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+
+
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* antes: space-between */
+    gap: 0.25em;
+    /* separa icono y nombre */
+}
+
+.header .time {
+    margin-left: auto;
+    /* empuja sólo el tiempo al extremo derecho */
+}
+
+
+.carousel {
+    padding: 0.3rem;
+    /* espacio para que la sombra respire */
+    background: #110122;
+    border-radius: var(--radius);
+    box-shadow: 0 8px 24px rgba(255, 217, 0, 0.6);
+}
+
+.carousel-item img {
+    position: relative;
+    z-index: 1;
+}
+
+.skeleton {
+    z-index: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.carousel-item {
+    flex: 0 0 calc((100% - (4 * 0.5rem)) / 5);
+    aspect-ratio: 1 / 1.8;
+    /* cajas cuadradas */
+    overflow: hidden;
+    /* recorta lo que sobre */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.watermark {
+    position: fixed;
+    bottom: 1px;
+    text-align: center;
+    z-index: 1000;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    font-size: clamp(7px, 1.1dvh, 1.1vw);
+    opacity: 0.3;
+}
+
+
+.logo .icon {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+
+    /* border-radius: 50%; */
+    /* border: solid 2px rgba(255, 234, 0, 0.655); */
+}
+
+
+
+.fire {
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+}
+
+
+
+
+
+
+
+
+
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    /* Fondo negro más opaco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    /* Z-index súper alto para estar por encima de TODO */
+}
+
+#loading-overlay.hidden {
+    display: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body.lbody {
+    overflow: hidden;
+    opacity: 0;
+}
+
+body {
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    background-color: rgb(22 26 37);
+}
