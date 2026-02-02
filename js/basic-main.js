@@ -20,7 +20,7 @@ document.getElementById("Btn").addEventListener("click", async () => {
     if (randomLine) {
         console.log("ok")
 
-        const msg = `Hola Ganamos! vengo por el bono de bienvenida\nMe creas un usuario?`
+        const msg = `Hola Yessi MB! vengo por el bono de bienvenida\nMe creas un usuario?`
         const url = `https://wa.me/${randomLine}?text=${encodeURIComponent(msg)}`;
         window.location.href = url
     }
