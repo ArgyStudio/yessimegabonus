@@ -6,7 +6,11 @@ document.getElementById("Btn").addEventListener("click", async () => {
 
 
 
-    const nums = ["5491168539544", "5491169707871"
+       const nums = [
+        "5491168526256",
+        "5491168536364",
+        "5491168539940",
+        "5491168526372"
     ]
 
 
